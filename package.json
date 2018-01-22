@@ -1,0 +1,14 @@
+{
+  "name": "dashboard",
+  "version": "0.0.1",
+  "author": "Dorian Dogaru",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-cssmin": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1"
+  },
+  "private": true
+}

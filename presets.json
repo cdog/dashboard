@@ -1,0 +1,191 @@
+{
+  "column": {
+    "clustered-column": {
+      "dataUrl": "data/serial-1.json"
+    },
+    "stacked-column": {
+      "dataUrl": "data/serial-1.json",
+      "stackType": "regular"
+    },
+    "100-stacked-column": {
+      "dataUrl": "data/serial-1.json",
+      "stackType": "100%"
+    },
+    "3d-clustered-column": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d"
+    },
+    "3d-stacked-column": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "regular"
+    },
+    "3d-100-stacked-column": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "100%"
+    },
+    "3d-column": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "3d"
+    },
+    "clustered-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder"
+    },
+    "stacked-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "regular"
+    },
+    "100-stacked-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "100%"
+    },
+    "3d-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "3d"
+    }
+  },
+  "bar": {
+    "clustered-bar": {
+      "dataUrl": "data/serial-1.json"
+    },
+    "stacked-bar": {
+      "dataUrl": "data/serial-1.json",
+      "stackType": "regular"
+    },
+    "100-stacked-bar": {
+      "dataUrl": "data/serial-1.json",
+      "stackType": "100%"
+    },
+    "3d-clustered-bar": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d"
+    },
+    "3d-stacked-bar": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "regular"
+    },
+    "3d-100-stacked-bar": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "100%"
+    },
+    "3d-bar": {
+      "dataUrl": "data/serial-1.json",
+      "type": "3d",
+      "stackType": "3d"
+    },
+    "clustered-horizontal-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder"
+    },
+    "stacked-horizontal-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "regular"
+    },
+    "100-stacked-horizontal-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "100%"
+    },
+    "3d-horizontal-cylinder": {
+      "dataUrl": "data/serial-1.json",
+      "type": "cylinder",
+      "stackType": "3d"
+    }
+  },
+  "line": {
+    "line": {
+      "dataUrl": "data/serial-2.json"
+    },
+    "stacked-line": {
+      "dataUrl": "data/serial-2.json",
+      "stackType": "regular"
+    },
+    "100-stacked-line": {
+      "dataUrl": "data/serial-2.json",
+      "stackType": "100%"
+    },
+    "smooth-line": {
+      "dataUrl": "data/serial-2.json",
+      "type": "smoothedLine"
+    },
+    "step-line": {
+      "dataUrl": "data/serial-2.json",
+      "type": "step",
+      "bulletsEnabled": false
+    }
+  },
+  "area": {
+    "area": {
+      "dataUrl": "data/serial-2.json"
+    },
+    "stacked-area": {
+      "dataUrl": "data/serial-2.json",
+      "stackType": "regular"
+    },
+    "100-stacked-area": {
+      "dataUrl": "data/serial-2.json",
+      "stackType": "100%"
+    },
+    "smooth-area": {
+      "dataUrl": "data/serial-2.json",
+      "type": "smoothedLine"
+    }
+  },
+  "pie": {
+    "pie": {
+      "dataUrl": "data/sliced.json"
+    },
+    "3d-pie": {
+      "dataUrl": "data/sliced.json",
+      "is3D": true
+    }
+  },
+  "donut": {
+    "donut": {
+      "dataUrl": "data/sliced.json"
+    },
+    "3d-donut": {
+      "dataUrl": "data/sliced.json",
+      "is3D": true
+    }
+  },
+  "scatter": {
+    "scatter": {
+      "dataUrl": "data/scatter.json"
+    }
+  },
+  "bubble": {
+    "bubble": {
+      "dataUrl": "data/bubble.json"
+    }
+  },
+  "angularGauge": {
+    "angular-gauge": {
+      "dataUrl": "data/gauge-1.json"
+    }
+  },
+  "cylinderGauge": {
+    "cylinder-gauge": {
+      "dataUrl": "data/gauge-1.json"
+    }
+  },
+  "funnel": {
+    "funnel": {
+      "dataUrl": "data/sliced.json"
+    }
+  },
+  "pyramid": {
+    "pyramid": {
+      "dataUrl": "data/sliced.json"
+    }
+  }
+}

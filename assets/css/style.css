@@ -1,0 +1,113 @@
+body {
+  background-color: #f9f9f9;
+  padding-top: 66px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+.checkbox > input[type="checkbox"] {
+  margin-left: 0;
+}
+
+.widgets-list {
+  list-style: none;
+  margin: -1px;
+  padding-left: 0;
+}
+
+.widgets-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #fff;
+  cursor: pointer;
+  float: left;
+  outline: 0;
+  padding: 10px;
+  text-align: center;
+  width: 25%;
+}
+
+.widgets-list li:hover,
+.widgets-list li:focus {
+  background-color: #428bca;
+  color: #fff;
+  text-decoration: none;
+}
+
+.widgets-list .glyphicon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.widgets-list .caption {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .widgets-list li {
+    width: 50%;
+  }
+}
+
+.dashboard {
+  margin: -5px -5px 10px;
+}
+
+.gridster .preview-holder {
+  background-color: #eee;
+  border: 1px dashed #999;
+}
+
+.panel-heading {
+  cursor: move;
+}
+
+.panel-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.panel-body {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 39px;
+}
+
+.widget-actions {
+  float: right;
+  line-height: 1;
+  margin-left: 15px;
+}
+
+.widget-actions .action {
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  filter: alpha(opacity=20);
+  opacity: .2;
+  outline: 0;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.widget-actions .action:hover {
+  filter: alpha(opacity=50);
+  opacity: .5;
+  text-decoration: none;
+}
+
+.widget-actions .action + .action {
+  margin-left: 5px;
+}
