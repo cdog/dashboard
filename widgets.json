@@ -1,0 +1,123 @@
+[
+  {
+    "widget": "angularGauge",
+    "options": {
+      "disabled": false,
+      "create": null,
+      "dataUrl": "data/gauge-1.json",
+      "title": "",
+      "subtitle": "",
+      "legendEnabled": false,
+      "legendPosition": "bottom",
+      "legendAlign": "center",
+      "min": 0,
+      "max": 100,
+      "valueInterval": 10,
+      "low": 40,
+      "high": 60
+    },
+    "title": "Angular gauge",
+    "x": 1,
+    "y": 1,
+    "width": 2,
+    "height": 2
+  },
+  {
+    "widget": "pie",
+    "options": {
+      "disabled": false,
+      "create": null,
+      "dataUrl": "data/sliced.json",
+      "title": "",
+      "subtitle": "",
+      "legendEnabled": true,
+      "legendPosition": "right",
+      "legendAlign": "center",
+      "is3D": false,
+      "labelsEnabled": false,
+      "pullOutOnlyOne": true
+    },
+    "title": "Pie",
+    "x": 3,
+    "y": 1,
+    "width": 2,
+    "height": 2
+  },
+  {
+    "widget": "scatter",
+    "options": {
+      "disabled": false,
+      "create": null,
+      "dataUrl": "data/scatter.json",
+      "title": "",
+      "subtitle": "",
+      "legendEnabled": true,
+      "legendPosition": "bottom",
+      "legendAlign": "center",
+      "xAxisTitle": "",
+      "yAxisTitle": "",
+      "labelsEnabled": false,
+      "cursorEnabled": false,
+      "scrollbarEnabled": false
+    },
+    "title": "Scatter",
+    "x": 5,
+    "y": 1,
+    "width": 2,
+    "height": 2
+  },
+  {
+    "widget": "area",
+    "options": {
+      "disabled": false,
+      "create": null,
+      "dataUrl": "data/serial-2.json",
+      "title": "",
+      "subtitle": "",
+      "legendEnabled": true,
+      "legendPosition": "bottom",
+      "legendAlign": "center",
+      "categoryAxisTitle": "",
+      "valueAxisTitle": "",
+      "stackType": "none",
+      "logarithmic": false,
+      "labelsEnabled": false,
+      "cursorType": "none",
+      "scrollbarType": "none",
+      "type": "smoothedLine",
+      "bulletsEnabled": true
+    },
+    "title": "Smooth area",
+    "x": 1,
+    "y": 3,
+    "width": 3,
+    "height": 3
+  },
+  {
+    "widget": "line",
+    "options": {
+      "disabled": false,
+      "create": null,
+      "dataUrl": "data/serial-2.json",
+      "title": "",
+      "subtitle": "",
+      "legendEnabled": true,
+      "legendPosition": "bottom",
+      "legendAlign": "center",
+      "categoryAxisTitle": "",
+      "valueAxisTitle": "",
+      "stackType": "none",
+      "logarithmic": false,
+      "labelsEnabled": false,
+      "cursorType": "none",
+      "scrollbarType": "none",
+      "type": "step",
+      "bulletsEnabled": false
+    },
+    "title": "Step line",
+    "x": 4,
+    "y": 3,
+    "width": 3,
+    "height": 3
+  }
+]

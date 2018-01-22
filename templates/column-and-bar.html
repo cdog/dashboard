@@ -1,0 +1,129 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title" id="modal-widget-settings-label">Widget settings</h4>
+</div><!-- .modal-header -->
+<div class="modal-body">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="option-data-url" class="col-sm-4 control-label">Data URL</label>
+      <div class="col-sm-8">
+        <input type="url" class="form-control" id="option-data-url" name="dataUrl" placeholder="Data URL">
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-title" class="col-sm-4 control-label">Title</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="option-title" name="title" placeholder="Title">
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-subtitle" class="col-sm-4 control-label">Subtitle</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="option-subtitle" name="subtitle" placeholder="Subtitle">
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-legend-enabled" class="col-sm-4 control-label">Legend enabled</label>
+      <div class="col-sm-8">
+        <div class="checkbox">
+          <input type="checkbox" id="option-legend-enabled" name="legendEnabled" checked>
+        </div><!-- .checkbox -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-legend-position" class="col-sm-4 control-label">Legend position</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-legend-position" name="legendPosition">
+          <option value="top">Top</option>
+          <option value="right">Right</option>
+          <option value="bottom" selected>Bottom</option>
+          <option value="left">Left</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-legend-align" class="col-sm-4 control-label">Legend align</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-legend-align" name="legendAlign">
+          <option value="left">Left</option>
+          <option value="center" selected>Center</option>
+          <option value="right">Right</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-category-axis-title" class="col-sm-4 control-label">Category axis title</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="option-category-axis-title" name="categoryAxisTitle" placeholder="Category axis title">
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-value-axis-title" class="col-sm-4 control-label">Value axis title</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="option-value-axis-title" name="valueAxisTitle" placeholder="Value axis title">
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-stack-type" class="col-sm-4 control-label">Stack type</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-stack-type" name="stackType">
+          <option value="none" selected>None</option>
+          <option value="regular">Regular</option>
+          <option value="100%">100%</option>
+          <option value="3d">3D</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-logarithmic" class="col-sm-4 control-label">Logarithmic</label>
+      <div class="col-sm-8">
+        <div class="checkbox">
+          <input type="checkbox" id="option-logarithmic" name="logarithmic">
+        </div><!-- .checkbox -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-labels-enabled" class="col-sm-4 control-label">Labels enabled</label>
+      <div class="col-sm-8">
+        <div class="checkbox">
+          <input type="checkbox" id="option-labels-enabled" name="labelsEnabled">
+        </div><!-- .checkbox -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-cursor-type" class="col-sm-4 control-label">Cursor type</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-cursor-type" name="cursorType">
+          <option value="none" selected>None</option>
+          <option value="x">X</option>
+          <option value="xy">XY</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-scrollbar-type" class="col-sm-4 control-label">Scrollbar type</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-scrollbar-type" name="scrollbarType">
+          <option value="none" selected>None</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+    <div class="form-group">
+      <label for="option-type" class="col-sm-4 control-label">Type</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="option-type" name="type">
+          <option value="2d" selected>2D</option>
+          <option value="3d">3D</option>
+          <option value="cylinder">Cylinder</option>
+        </select><!-- .form-control -->
+      </div><!-- .col-sm-8 -->
+    </div><!-- .form-group -->
+  </form><!-- .form-horizontal -->
+</div><!-- .modal-body -->
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <button type="button" class="btn btn-primary confirm" data-dismiss="modal">Save changes</button>
+</div><!-- .modal-footer -->

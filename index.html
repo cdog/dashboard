@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/jquery.gridster.min.css" rel="stylesheet">
+    <link href="assets/css/style.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button><!-- .navbar-toggle -->
+          <a class="navbar-brand" href="#">Dashboard</a>
+        </div><!-- .navbar-header -->
+        <div class="navbar-collapse collapse">
+          <div class="btn-toolbar navbar-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#modal-import-widgets">
+                <span class="glyphicon glyphicon-floppy-open"></span>
+                Import
+              </button><!-- .btn btn-default .navbar-btn -->
+              <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#modal-export-widgets">
+                <span class="glyphicon glyphicon-floppy-save"></span>
+                Export
+              </button><!-- .btn btn-default .navbar-btn -->
+            </div><!-- .btn-group -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#modal-add-widget">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add widget
+              </button><!-- .btn btn-success .navbar-btn -->
+            </div><!-- .btn-group -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger navbar-btn" data-toggle="modal" data-target="#modal-remove-all-widgets">
+                <span class="glyphicon glyphicon-trash"></span>
+                Remove all
+              </button><!-- .btn btn-default .navbar-btn -->
+            </div><!-- .btn-group -->
+          </div><!-- .btn-toolbar .navbar-right -->
+        </div><!-- .navbar-collapse -->
+      </div><!-- .container-fluid -->
+    </div><!-- .navbar .navbar-inverse .navbar-static-top -->
+    <div class="container-fluid">
+      <div class="dashboard" id="dashboard-example"></div>
+      <script id="widget-template" type="text/x-handlebars-template">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <div class="widget-actions">
+              <a href="#" class="action action-edit" data-toggle="modal" data-target="#modal-widget-settings">
+                <span class="glyphicon glyphicon-cog" data-toggle="tooltip" data-container="body" title="Widget settings"></span>
+              </a>{{!-- .action --}}
+              <a href="#" class="action" data-toggle="modal" data-target="#modal-remove-widget">
+                <span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-container="body" title="Remove widget"></span>
+              </a>{{!-- .action --}}
+            </div>{{!-- .widget-actions --}}
+            <h3 class="panel-title">{{title}}</h3>
+          </div>{{!-- .panel-heading .clearfix --}}
+          <div class="panel-body"></div>
+        </div>{{!-- .panel .panel-default --}}
+      </script><!-- #widget-template -->
+    </div><!-- .container-fluid -->
+    <div class="modal fade" id="modal-import-widgets" tabindex="-1" role="dialog" aria-labelledby="modal-import-widgets-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-import-widgets-label">Import widgets</h4>
+          </div><!-- .modal-header -->
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <textarea class="form-control" name="import" rows="10"></textarea>
+              </div><!-- .form-group -->
+            </form><!-- .form-horizontal -->
+          </div><!-- .modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary confirm" data-dismiss="modal">Import</button>
+          </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog -->
+    </div><!-- .modal .fade #modal-import-widgets -->
+    <div class="modal fade" id="modal-export-widgets" tabindex="-1" role="dialog" aria-labelledby="modal-export-widgets-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-export-widgets-label">Export widgets</h4>
+          </div><!-- .modal-header -->
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <textarea class="form-control" name="export" rows="10"></textarea>
+              </div><!-- .form-group -->
+            </form><!-- .form-horizontal -->
+          </div><!-- .modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog -->
+    </div><!-- .modal .fade #modal-export-widgets -->
+    <div class="modal fade" id="modal-add-widget" tabindex="-1" role="dialog" aria-labelledby="modal-add-widget-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-add-widget-label">Add widget</h4>
+          </div><!-- .modal-header -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-4 col-md-3">
+                <ul class="nav nav-pills nav-stacked" role="tablist">
+                  <li class="active">
+                    <a href="#tab-column" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">11</span>
+                      Column
+                    </a>
+                  </li><!-- .active -->
+                  <li>
+                    <a href="#tab-bar" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">11</span>
+                      Bar
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#tab-line" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">5</span>
+                      Line
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#tab-area" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">4</span>
+                      Area
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#tab-pie-and-donut" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">4</span>
+                      Pie and donut
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#tab-scatter-and-bubble" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">2</span>
+                      Scatter and bubble
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#tab-other" role="tab" data-toggle="pill">
+                      <span class="badge pull-right">4</span>
+                      Other
+                    </a>
+                  </li>
+                </ul><!-- .nav .nav-pills .nav-stacked -->
+              </div><!-- .col-xs-4 .col-md-3 -->
+              <div class="col-xs-8 col-md-9">
+                <div class="tab-content">
+                  <div class="tab-pane fade in active" id="tab-column" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="clustered-column" data-target="#dashboard-example" data-dismiss="modal" title="Clustered column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Clustered column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="stacked-column" data-target="#dashboard-example" data-dismiss="modal" title="Stacked column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="100-stacked-column" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="3d-clustered-column" data-target="#dashboard-example" data-dismiss="modal" title="3D clustered column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D clustered column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="3d-stacked-column" data-target="#dashboard-example" data-dismiss="modal" title="3D stacked column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D stacked column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="3d-100-stacked-column" data-target="#dashboard-example" data-dismiss="modal" title="3D 100% stacked column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D 100% stacked column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="3d-column" data-target="#dashboard-example" data-dismiss="modal" title="3D column">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D column</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="clustered-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="Clustered cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Clustered cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="stacked-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="Stacked cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="100-stacked-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="column" data-preset="3d-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="3D cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D cylinder</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade .in .active #tab-column -->
+                  <div class="tab-pane fade" id="tab-bar" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="clustered-bar" data-target="#dashboard-example" data-dismiss="modal" title="Clustered bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Clustered bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="stacked-bar" data-target="#dashboard-example" data-dismiss="modal" title="Stacked bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="100-stacked-bar" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="3d-clustered-bar" data-target="#dashboard-example" data-dismiss="modal" title="3D clustered bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D clustered bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="3d-stacked-bar" data-target="#dashboard-example" data-dismiss="modal" title="3D stacked bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D stacked bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="3d-100-stacked-bar" data-target="#dashboard-example" data-dismiss="modal" title="3D 100% stacked bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D 100% stacked bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="3d-bar" data-target="#dashboard-example" data-dismiss="modal" title="3D bar">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D bar</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="clustered-horizontal-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="Clustered horizontal cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Clustered horizontal cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="stacked-horizontal-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="Stacked horizontal cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked horizontal cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="100-stacked-horizontal-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked horizontal cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked horizontal cylinder</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bar" data-preset="3d-horizontal-cylinder" data-target="#dashboard-example" data-dismiss="modal" title="3D horizontal cylinder">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D horizontal cylinder</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-bar -->
+                  <div class="tab-pane fade" id="tab-line" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="line" data-preset="line" data-target="#dashboard-example" data-dismiss="modal" title="Line">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Line</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="line" data-preset="stacked-line" data-target="#dashboard-example" data-dismiss="modal" title="Stacked line">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked line</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="line" data-preset="100-stacked-line" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked line">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked line</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="line" data-preset="smooth-line" data-target="#dashboard-example" data-dismiss="modal" title="Smooth line">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Smooth line</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="line" data-preset="step-line" data-target="#dashboard-example" data-dismiss="modal" title="Step line">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Step line</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-line -->
+                  <div class="tab-pane fade" id="tab-area" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="area" data-preset="area" data-target="#dashboard-example" data-dismiss="modal" title="Area">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Area</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="area" data-preset="stacked-area" data-target="#dashboard-example" data-dismiss="modal" title="Stacked area">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Stacked area</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="area" data-preset="100-stacked-area" data-target="#dashboard-example" data-dismiss="modal" title="100% stacked area">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">100% stacked area</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="area" data-preset="smooth-area" data-target="#dashboard-example" data-dismiss="modal" title="Smooth area">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Smooth area</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-area -->
+                  <div class="tab-pane fade" id="tab-pie-and-donut" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="pie" data-preset="pie" data-target="#dashboard-example" data-dismiss="modal" title="Pie">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Pie</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="pie" data-preset="3d-pie" data-target="#dashboard-example" data-dismiss="modal" title="3D pie">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D pie</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="donut" data-preset="donut" data-target="#dashboard-example" data-dismiss="modal" title="Donut">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Donut</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="donut" data-preset="3d-donut" data-target="#dashboard-example" data-dismiss="modal" title="3D donut">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">3D donut</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-pie-and-donut -->
+                  <div class="tab-pane fade" id="tab-scatter-and-bubble" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="scatter" data-preset="scatter" data-target="#dashboard-example" data-dismiss="modal" title="Scatter">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Scatter</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="bubble" data-preset="bubble" data-target="#dashboard-example" data-dismiss="modal" title="Bubble">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Bubble</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-scatter-and-bubble -->
+                  <div class="tab-pane fade" id="tab-other" role="tabpanel">
+                    <ul class="widgets-list clearfix">
+                      <li tabindex="-1" data-add="widget" data-widget="angularGauge" data-preset="angular-gauge" data-target="#dashboard-example" data-dismiss="modal" title="Angular gauge">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Angular gauge</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="cylinderGauge" data-preset="cylinder-gauge" data-target="#dashboard-example" data-dismiss="modal" title="Cylinder gauge">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Cylinder gauge</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="funnel" data-preset="funnel" data-target="#dashboard-example" data-dismiss="modal" title="Funnel">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Funnel</span>
+                      </li>
+                      <li tabindex="-1" data-add="widget" data-widget="pyramid" data-preset="pyramid" data-target="#dashboard-example" data-dismiss="modal" title="Pyramid">
+                        <span class="glyphicon glyphicon-dashboard"></span>
+                        <span class="caption">Pyramid</span>
+                      </li>
+                    </ul><!-- .widgets .clearfix -->
+                  </div><!-- .tab-pane .fade #tab-other -->
+                </div><!-- .tab-content -->
+              </div><!-- .col-xs-8 .col-md-9 -->
+            </div><!-- .row -->
+          </div><!-- .modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog .modal-lg -->
+    </div><!-- .modal .fade #modal-add-widget -->
+    <div class="modal fade" id="modal-remove-all-widgets" tabindex="-1" role="dialog" aria-labelledby="modal-remove-all-widgets-label" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-remove-all-widgets-label">Remove all widgets</h4>
+          </div><!-- .modal-header -->
+          <div class="modal-body">
+            <p>You are about to remove all widgets. Are you sure?</p>
+          </div><!-- .modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger confirm" data-dismiss="modal">Remove all</button>
+          </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog .modal-sm -->
+    </div><!-- .modal .fade #modal-remove-all-widgets -->
+    <div class="modal fade" id="modal-widget-settings" tabindex="-1" role="dialog" aria-labelledby="modal-widget-settings-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content"></div>
+      </div><!-- .modal-dialog -->
+    </div><!-- .modal .fade #modal-widget-settings -->
+    <div class="modal fade" id="modal-remove-widget" tabindex="-1" role="dialog" aria-labelledby="modal-remove-widget-label" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-remove-widget-label">Remove widget</h4>
+          </div><!-- .modal-header -->
+          <div class="modal-body">
+            <p>You are about to remove the selected widget. Are you sure?</p>
+          </div><!-- .modal-body -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger confirm" data-dismiss="modal">Remove widget</button>
+          </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog .modal-sm -->
+    </div><!-- .modal .fade #modal-remove-widget -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/funnel.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/pie.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://cdn.amcharts.com/lib/3/xy.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.gridster.min.js"></script>
+    <script src="assets/js/handlebars-v2.0.0.js"></script>
+    <script src="assets/js/widgets.min.js"></script>
+    <script src="assets/js/dashboard.min.js"></script>
+    <script src="assets/js/application.min.js"></script>
+  </body>
+</html>
